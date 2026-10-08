@@ -1,11 +1,2 @@
-colorama==0.4.6
-iniconfig==2.3.0
-mpremote==1.25.0
-packaging==26.0
-pluggy==1.6.0
-Pygments==2.19.2
-pyserial==3.5
-pytest==9.0.2
-sim_lgp30==0.0.0
-# Editable install with no version control (UNKNOWN==0.0.0)
--e c:\users\ether\source\repos\sim_lgp30
+intelhex==2.3.0
+pytest==9.0.3
