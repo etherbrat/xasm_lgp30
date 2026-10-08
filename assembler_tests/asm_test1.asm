@@ -1,0 +1,19 @@
+; asm_test1.asm
+; LGP-30 instructions
+; positives
+    b 2000
+    h 2001
+    c 2002
+    a 2003
+    s 2004
+    m 2005
+    n 2006
+    d 2007
+    e 2008
+    y 2009
+    r 2010
+    u 2011
+    t 2012
+    z 32
+    p 3
+    i 0

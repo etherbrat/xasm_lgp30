@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+src/xasm_lgp30/__init__.py
+src/xasm_lgp30/assembler.py
+src/xasm_lgp30/assembler_constants.py
+src/xasm_lgp30/evaluate_funcsV1.py
+src/xasm_lgp30/expression_parserV2.py
+src/xasm_lgp30/parser_manual_testing.py
+src/xasm_lgp30/validate_funcsV1.py
+src/xasm_lgp30.egg-info/PKG-INFO
+src/xasm_lgp30.egg-info/SOURCES.txt
+src/xasm_lgp30.egg-info/dependency_links.txt
+src/xasm_lgp30.egg-info/top_level.txt
+tests/test_analyser.py
+tests/test_assemble_line.py
+tests/test_evaluator.py
+tests/test_parser.py

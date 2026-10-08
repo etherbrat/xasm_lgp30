@@ -1,0 +1,10 @@
+.pytest_cache/
+.vscode/
+__pycache__/
+build/
+docs/*.docx
+references/
+venv/
+assembler.spec
+pyproject.toml
+run_thonny.py

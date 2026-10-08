@@ -1,0 +1,68 @@
+
+Pass 1
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test0.asm                          
+   2 ; basic syntax (comment only)            
+   3 ; positives (comment only)               
+   4 ; label only (comment only)              
+   5 label1:                                  
+   6 ; opcode and operand only                
+   7         b 0                              
+   8 ; label, opcode and operand              
+   9 label2: b 0                              
+  10 label3:        ; label and comment       
+  11         b 0    ; opcode, operand and com 
+  12 label4: b 0    ; label, opcode, operand  
+  13 ; negatives                              
+  14 1abel:          ; bad label              Error: Line 14 - Invalid symbol: 1abel
+  15     q 2000      ; bad opcode             Error: Line 15 - Invalid opcode: q
+  16     b           ; not  enough operands   Error: Line 16 - Invalid argument count: 1 argument(s) required
+  17     b a b       ; too many operands      Error: Line 17 - Invalid argument count: 1 argument(s) required
+  18     b a         ; undefined operand      
+  19     b 6000      ; bad address            
+  20     b 3000+4000 ; bad address            
+  21     b a&%       ; bad address expression Error: Line 21 - Invalid expression: a&%
+  22     b 3.0+4.0   ; bad address expression 
+  23                                          
+
+Symbol Table:
+------ ------
+label1       :            0
+label2       :            1
+label3       :            2
+label4       :            3
+
+Pass 2
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test0.asm                          
+   2 ; basic syntax (comment only)            
+   3 ; positives (comment only)               
+   4 ; label only (comment only)              
+   5 label1:                                  
+   6 ; opcode and operand only                
+   7         b 0                                 0 b         0  0  0        65536 0001 0000 0001 0000
+   8 ; label, opcode and operand              
+   9 label2: b 0                                 1 b         0  0  0        65536 0001 0000 0001 0000
+  10 label3:        ; label and comment       
+  11         b 0    ; opcode, operand and com    2 b         0  0  0        65536 0001 0000 0001 0000
+  12 label4: b 0    ; label, opcode, operand     3 b         0  0  0        65536 0001 0000 0001 0000
+  13 ; negatives                              
+  14 1abel:          ; bad label              Error: Line 14 - Invalid symbol: 1abel
+  15     q 2000      ; bad opcode             Error: Line 15 - Invalid opcode: q
+  16     b           ; not  enough operands   Error: Line 16 - Invalid argument count: 1 argument(s) required
+  17     b a b       ; too many operands      Error: Line 17 - Invalid argument count: 1 argument(s) required
+  18     b a         ; undefined operand      Error: Line 18 - ValueError, Unknown RPN token 'a' - a
+  19     b 6000      ; bad address            Error: Line 19 - Illegal address value: 6000
+  20     b 3000+4000 ; bad address            Error: Line 20 - Illegal address value: 7000
+  21     b a&%       ; bad address expression Error: Line 21 - Invalid expression: a&%
+  22     b 3.0+4.0   ; bad address expression Error: Line 22 - Non-integer expression: 3.0+4.0
+  23                                          
+
+Symbol Table:
+------ ------
+label1       :            0
+label2       :            1
+label3       :            2
+label4       :            3

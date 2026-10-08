@@ -1,0 +1,34 @@
+
+Pass 1
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test11.asm                         
+   2 ; fill memory with n zeros               
+   3 ; starting at the current address        
+   4 ; for consumption by the hexfile loader  
+   5 ;                                        
+   6 .locn 137                                locn =  137
+   7 start:                                   
+   8     .blkw 96                             
+   9 .end start                               
+
+Symbol Table:
+------ ------
+start        :          137
+
+Pass 2
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test11.asm                         
+   2 ; fill memory with n zeros               
+   3 ; starting at the current address        
+   4 ; for consumption by the hexfile loader  
+   5 ;                                        
+   6 .locn 137                                locn =  137
+   7 start:                                   
+   8     .blkw 96                             
+   9 .end start                               Start: 137
+
+Symbol Table:
+------ ------
+start        :          137

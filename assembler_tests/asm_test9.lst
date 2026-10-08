@@ -1,0 +1,80 @@
+
+Pass 1
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test9.asm                          
+   2 ; test tab expansion for source files wi 
+   3 ; positives                              
+   4 ; a comment can contain a colon: like th 
+   5 start:  b   0   ; a comment              
+   6                 ; a comment by itself    
+   7         b   0   ; yet another            
+   8 label:          ; yet another            
+   9 ; try different spacing                  
+  10 label1:     b       0   ; a comment      
+  11                         ; a comment by i 
+  12             b       0   ; yet another    
+  13 label2:                 ; yet another    
+  14 ; just use spaces                        
+  15 label3: b 0 ; comment                    
+  16             ; a comment by itself        
+  17         b 0 ; yet another                
+  18 label4:     ; yet another                
+  19 ; use minimal whitespace                 
+  20 label5:b 0;comment - still works         
+  21 ; negatives                              
+  22  label6:    ; label must be at the start Error: Line 22 - Invalid symbol:  label6
+  23     label7: ; ditto with a tab           Error: Line 23 - Invalid symbol: 	label7
+  24 ;                                        
+  25 ; .end with tabs                         
+  26             .end    start                
+
+Symbol Table:
+------ ------
+start        :            0
+label        :            2
+label1       :            2
+label2       :            4
+label3       :            4
+label4       :            6
+label5       :            6
+
+Pass 2
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test9.asm                          
+   2 ; test tab expansion for source files wi 
+   3 ; positives                              
+   4 ; a comment can contain a colon: like th 
+   5 start:  b   0   ; a comment                 0 b         0  0  0        65536 0001 0000 0001 0000
+   6                 ; a comment by itself    
+   7         b   0   ; yet another               1 b         0  0  0        65536 0001 0000 0001 0000
+   8 label:          ; yet another            
+   9 ; try different spacing                  
+  10 label1:     b       0   ; a comment         2 b         0  0  0        65536 0001 0000 0001 0000
+  11                         ; a comment by i 
+  12             b       0   ; yet another       3 b         0  0  0        65536 0001 0000 0001 0000
+  13 label2:                 ; yet another    
+  14 ; just use spaces                        
+  15 label3: b 0 ; comment                       4 b         0  0  0        65536 0001 0000 0001 0000
+  16             ; a comment by itself        
+  17         b 0 ; yet another                   5 b         0  0  0        65536 0001 0000 0001 0000
+  18 label4:     ; yet another                
+  19 ; use minimal whitespace                 
+  20 label5:b 0;comment - still works            6 b         0  0  0        65536 0001 0000 0001 0000
+  21 ; negatives                              
+  22  label6:    ; label must be at the start Error: Line 22 - Invalid symbol:  label6
+  23     label7: ; ditto with a tab           Error: Line 23 - Invalid symbol: 	label7
+  24 ;                                        
+  25 ; .end with tabs                         
+  26             .end    start                Start: 0
+
+Symbol Table:
+------ ------
+start        :            0
+label        :            2
+label1       :            2
+label2       :            4
+label3       :            4
+label4       :            6
+label5       :            6

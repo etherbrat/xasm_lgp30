@@ -1,0 +1,62 @@
+
+Pass 1
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test7.asm                          
+   2 ; tests of .lshn and .rshm               
+   3         .locn 100                        locn =  100
+   4 start:                                   
+   5 ; positives                              
+   6         .lshn 1        ; 0x00000002      
+   7         .lshn 15       ; 0x00008000      
+   8         .lshn 30       ; 0x40000000      
+   9         .rshm 1        ; 0x40000000      
+  10         .rshm 15       ; 0x00010000      
+  11         .rshm 30       ; 0x00000002      
+  12 ; negatives                              
+  13         .lshn -1       ; bad shift       
+  14         .lshn 10.      ; non-integer     Error: Line 14 - Invalid expression: 10.
+  15         .lshn 31       ; bad shift       
+  16         .lshn 2&34//## ; bad expression  Error: Line 16 - Invalid expression: 2&34//##
+  17 ; negatives                              
+  18         .rshm -1       ; bad shift       
+  19         .rshm 10.      ; non-integer     Error: Line 19 - Invalid expression: 10.
+  20         .rshm 31       ; bad shift       
+  21         .rshm 2&34//## ; bad expression  Error: Line 21 - Invalid expression: 2&34//##
+  22 ;                                        
+  23        .end start                        
+
+Symbol Table:
+------ ------
+start        :          100
+
+Pass 2
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test7.asm                          
+   2 ; tests of .lshn and .rshm               
+   3         .locn 100                        locn =  100
+   4 start:                                   
+   5 ; positives                              
+   6         .lshn 1        ; 0x00000002       100                              2 0000 0002 0000 0002
+   7         .lshn 15       ; 0x00008000       101                          32768 0000 8000 0000 8000
+   8         .lshn 30       ; 0x40000000       102                     1073741824 4000 0000 4000 0000
+   9         .rshm 1        ; 0x40000000       103                     1073741824 4000 0000 4000 0000
+  10         .rshm 15       ; 0x00010000       104                          65536 0001 0000 0001 0000
+  11         .rshm 30       ; 0x00000002       105                              2 0000 0002 0000 0002
+  12 ; negatives                              
+  13         .lshn -1       ; bad shift       Error: Line 13 - Illegal shift value: -1
+  14         .lshn 10.      ; non-integer     Error: Line 14 - Invalid expression: 10.
+  15         .lshn 31       ; bad shift       Error: Line 15 - Illegal shift value: 31
+  16         .lshn 2&34//## ; bad expression  Error: Line 16 - Invalid expression: 2&34//##
+  17 ; negatives                              
+  18         .rshm -1       ; bad shift       Error: Line 18 - Illegal shift value: -1
+  19         .rshm 10.      ; non-integer     Error: Line 19 - Invalid expression: 10.
+  20         .rshm 31       ; bad shift       Error: Line 20 - Illegal shift value: 31
+  21         .rshm 2&34//## ; bad expression  Error: Line 21 - Invalid expression: 2&34//##
+  22 ;                                        
+  23        .end start                        Start: 100
+
+Symbol Table:
+------ ------
+start        :          100

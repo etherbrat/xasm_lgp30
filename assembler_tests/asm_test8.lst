@@ -1,0 +1,218 @@
+
+Pass 1
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test8.asm                          
+   2 ; test .pchar - all output characters    
+   3 ;                                        
+   4 ; positives                              
+   5 ; lower case                             
+   6 .pchar a                                 
+   7 .pchar b                                 
+   8 .pchar c                                 
+   9 .pchar d                                 
+  10 .pchar e                                 
+  11 .pchar f                                 
+  12 .pchar g                                 
+  13 .pchar h                                 
+  14 .pchar i                                 
+  15 .pchar j                                 
+  16 .pchar k                                 
+  17 .pchar m                                 
+  18 .pchar n                                 
+  19 .pchar o                                 
+  20 .pchar p                                 
+  21 .pchar q                                 
+  22 .pchar r                                 
+  23 .pchar s                                 
+  24 .pchar t                                 
+  25 .pchar u                                 
+  26 .pchar v                                 
+  27 .pchar w                                 
+  28 .pchar x                                 
+  29 .pchar y                                 
+  30 .pchar z                                 
+  31 .pchar 0                                 
+  32 .pchar 1                                 
+  33 .pchar 2                                 
+  34 .pchar 3                                 
+  35 .pchar 4                                 
+  36 .pchar 5                                 
+  37 .pchar 6                                 
+  38 .pchar 7                                 
+  39 .pchar 8                                 
+  40 .pchar 9                                 
+  41 .pchar -                                 
+  42 .pchar +                                 
+  43 .pchar #2                                
+  44 .pchar /                                 
+  45 .pchar .                                 
+  46 .pchar ,                                 
+  47 .pchar #~                                
+  48 .pchar #l                                
+  49 .pchar #u                                
+  50 .pchar #c                                
+  51 .pchar #n                                
+  52 .pchar #b                                
+  53 .pchar #t                                
+  54 .pchar '                                 
+  55 .pchar #x                                
+  56 ; upper case                             
+  57 .pchar A                                 
+  58 .pchar B                                 
+  59 .pchar C                                 
+  60 .pchar D                                 
+  61 .pchar E                                 
+  62 .pchar F                                 
+  63 .pchar G                                 
+  64 .pchar H                                 
+  65 .pchar I                                 
+  66 .pchar J                                 
+  67 .pchar K                                 
+  68 .pchar M                                 
+  69 .pchar N                                 
+  70 .pchar O                                 
+  71 .pchar P                                 
+  72 .pchar Q                                 
+  73 .pchar R                                 
+  74 .pchar S                                 
+  75 .pchar T                                 
+  76 .pchar U                                 
+  77 .pchar V                                 
+  78 .pchar W                                 
+  79 .pchar X                                 
+  80 .pchar Y                                 
+  81 .pchar Z                                 
+  82 .pchar )                                 
+  83 .pchar L                                 
+  84 .pchar *                                 
+  85 .pchar "                                 
+  86 .pchar #d                                
+  87 .pchar %                                 
+  88 .pchar $                                 
+  89 .pchar #p                                
+  90 .pchar #s                                
+  91 .pchar (                                 
+  92 .pchar _                                 
+  93 .pchar =                                 
+  94 .pchar #1                                
+  95 .pchar ?                                 
+  96 .pchar ]                                 
+  97 .pchar [                                 
+  98 ; negatives                              
+  99 .pchar ; space must be escaped, semicolo Error: Line 99 - Invalid argument count: 1 argument(s) required
+ 100 .pchar : colon must be escaped - delimit Error: Line 100 - Invalid symbol: .pchar 
+ 101                                          
+ 102                                          
+
+Symbol Table:
+------ ------
+
+Pass 2
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test8.asm                          
+   2 ; test .pchar - all output characters    
+   3 ;                                        
+   4 ; positives                              
+   5 ; lower case                             
+   6 .pchar a                                    0 .pchar 3648 57  0       538880 0008 3900 0008 3900
+   7 .pchar b                                    1 .pchar  320  5  0       525568 0008 0500 0008 0500
+   8 .pchar c                                    2 .pchar 3392 53  0       537856 0008 3500 0008 3500
+   9 .pchar d                                    3 .pchar 1344 21  0       529664 0008 1500 0008 1500
+  10 .pchar e                                    4 .pchar 2368 37  0       533760 0008 2500 0008 2500
+  11 .pchar f                                    5 .pchar 2688 42  0       535040 0008 2f00 0008 2a00
+  12 .pchar g                                    6 .pchar 2944 46  0       536064 0008 2q00 0008 2e00
+  13 .pchar h                                    7 .pchar 3136 49  0       536832 0008 3100 0008 3100
+  14 .pchar i                                    8 .pchar 1088 17  0       528640 0008 1100 0008 1100
+  15 .pchar j                                    9 .pchar 3200 50  0       537088 0008 3200 0008 3200
+  16 .pchar k                                   10 .pchar 3456 54  0       538112 0008 3600 0008 3600
+  17 .pchar m                                   11 .pchar 1856 29  0       531712 0008 1k00 0008 1d00
+  18 .pchar n                                   12 .pchar 1600 25  0       530688 0008 1900 0008 1900
+  19 .pchar o                                   13 .pchar 2240 35  0       533248 0008 2300 0008 2300
+  20 .pchar p                                   14 .pchar 2112 33  0       532736 0008 2100 0008 2100
+  21 .pchar q                                   15 .pchar 3712 58  0       539136 0008 3f00 0008 3a00
+  22 .pchar r                                   16 .pchar  832 13  0       527616 0008 0k00 0008 0d00
+  23 .pchar s                                   17 .pchar 3904 61  0       539904 0008 3k00 0008 3d00
+  24 .pchar t                                   18 .pchar 2880 45  0       535808 0008 2k00 0008 2d00
+  25 .pchar u                                   19 .pchar 2624 41  0       534784 0008 2900 0008 2900
+  26 .pchar v                                   20 .pchar 1984 31  0       532224 0008 1w00 0008 1f00
+  27 .pchar w                                   21 .pchar 3968 62  0       540160 0008 3q00 0008 3e00
+  28 .pchar x                                   22 .pchar 2496 39  0       534272 0008 2700 0008 2700
+  29 .pchar y                                   23 .pchar  576  9  0       526592 0008 0900 0008 0900
+  30 .pchar z                                   24 .pchar   64  1  0       524544 0008 0100 0008 0100
+  31 .pchar 0                                   25 .pchar  128  2  0       524800 0008 0200 0008 0200
+  32 .pchar 1                                   26 .pchar  384  6  0       525824 0008 0600 0008 0600
+  33 .pchar 2                                   27 .pchar  640 10  0       526848 0008 0f00 0008 0a00
+  34 .pchar 3                                   28 .pchar  896 14  0       527872 0008 0q00 0008 0e00
+  35 .pchar 4                                   29 .pchar 1152 18  0       528896 0008 1200 0008 1200
+  36 .pchar 5                                   30 .pchar 1408 22  0       529920 0008 1600 0008 1600
+  37 .pchar 6                                   31 .pchar 1664 26  0       530944 0008 1f00 0008 1a00
+  38 .pchar 7                                   32 .pchar 1920 30  0       531968 0008 1q00 0008 1e00
+  39 .pchar 8                                   33 .pchar 2176 34  0       532992 0008 2200 0008 2200
+  40 .pchar 9                                   34 .pchar 2432 38  0       534016 0008 2600 0008 2600
+  41 .pchar -                                   35 .pchar  448  7  0       526080 0008 0700 0008 0700
+  42 .pchar +                                   36 .pchar  704 11  0       527104 0008 0g00 0008 0b00
+  43 .pchar #2                                  37 .pchar  960 15  0       528128 0008 0w00 0008 0f00
+  44 .pchar /                                   38 .pchar 1216 19  0       529152 0008 1300 0008 1300
+  45 .pchar .                                   39 .pchar 1472 23  0       530176 0008 1700 0008 1700
+  46 .pchar ,                                   40 .pchar 1728 27  0       531200 0008 1g00 0008 1b00
+  47 .pchar #~                                  41 .pchar  192  3  0       525056 0008 0300 0008 0300
+  48 .pchar #l                                  42 .pchar  256  4  0       525312 0008 0400 0008 0400
+  49 .pchar #u                                  43 .pchar  512  8  0       526336 0008 0800 0008 0800
+  50 .pchar #c                                  44 .pchar  768 12  0       527360 0008 0j00 0008 0c00
+  51 .pchar #n                                  45 .pchar 1024 16  0       528384 0008 1000 0008 1000
+  52 .pchar #b                                  46 .pchar 1280 20  0       529408 0008 1400 0008 1400
+  53 .pchar #t                                  47 .pchar 1536 24  0       530432 0008 1800 0008 1800
+  54 .pchar '                                   48 .pchar 2048 32  0       532480 0008 2000 0008 2000
+  55 .pchar #x                                  49 .pchar 4032 63  0       540416 0008 3w00 0008 3f00
+  56 ; upper case                             
+  57 .pchar A                                   50 .pchar 3648 57  0       538880 0008 3900 0008 3900
+  58 .pchar B                                   51 .pchar  320  5  0       525568 0008 0500 0008 0500
+  59 .pchar C                                   52 .pchar 3392 53  0       537856 0008 3500 0008 3500
+  60 .pchar D                                   53 .pchar 1344 21  0       529664 0008 1500 0008 1500
+  61 .pchar E                                   54 .pchar 2368 37  0       533760 0008 2500 0008 2500
+  62 .pchar F                                   55 .pchar 2688 42  0       535040 0008 2f00 0008 2a00
+  63 .pchar G                                   56 .pchar 2944 46  0       536064 0008 2q00 0008 2e00
+  64 .pchar H                                   57 .pchar 3136 49  0       536832 0008 3100 0008 3100
+  65 .pchar I                                   58 .pchar 1088 17  0       528640 0008 1100 0008 1100
+  66 .pchar J                                   59 .pchar 3200 50  0       537088 0008 3200 0008 3200
+  67 .pchar K                                   60 .pchar 3456 54  0       538112 0008 3600 0008 3600
+  68 .pchar M                                   61 .pchar 1856 29  0       531712 0008 1k00 0008 1d00
+  69 .pchar N                                   62 .pchar 1600 25  0       530688 0008 1900 0008 1900
+  70 .pchar O                                   63 .pchar 2240 35  0       533248 0008 2300 0008 2300
+  71 .pchar P                                   64 .pchar 2112 33  0       532736 0008 2100 0008 2100
+  72 .pchar Q                                   65 .pchar 3712 58  0       539136 0008 3f00 0008 3a00
+  73 .pchar R                                   66 .pchar  832 13  0       527616 0008 0k00 0008 0d00
+  74 .pchar S                                   67 .pchar 3904 61  0       539904 0008 3k00 0008 3d00
+  75 .pchar T                                   68 .pchar 2880 45  0       535808 0008 2k00 0008 2d00
+  76 .pchar U                                   69 .pchar 2624 41  0       534784 0008 2900 0008 2900
+  77 .pchar V                                   70 .pchar 1984 31  0       532224 0008 1w00 0008 1f00
+  78 .pchar W                                   71 .pchar 3968 62  0       540160 0008 3q00 0008 3e00
+  79 .pchar X                                   72 .pchar 2496 39  0       534272 0008 2700 0008 2700
+  80 .pchar Y                                   73 .pchar  576  9  0       526592 0008 0900 0008 0900
+  81 .pchar Z                                   74 .pchar   64  1  0       524544 0008 0100 0008 0100
+  82 .pchar )                                   75 .pchar  128  2  0       524800 0008 0200 0008 0200
+  83 .pchar L                                   76 .pchar  384  6  0       525824 0008 0600 0008 0600
+  84 .pchar *                                   77 .pchar  640 10  0       526848 0008 0f00 0008 0a00
+  85 .pchar "                                   78 .pchar  896 14  0       527872 0008 0q00 0008 0e00
+  86 .pchar #d                                  79 .pchar 1152 18  0       528896 0008 1200 0008 1200
+  87 .pchar %                                   80 .pchar 1408 22  0       529920 0008 1600 0008 1600
+  88 .pchar $                                   81 .pchar 1664 26  0       530944 0008 1f00 0008 1a00
+  89 .pchar #p                                  82 .pchar 1920 30  0       531968 0008 1q00 0008 1e00
+  90 .pchar #s                                  83 .pchar 2176 34  0       532992 0008 2200 0008 2200
+  91 .pchar (                                   84 .pchar 2432 38  0       534016 0008 2600 0008 2600
+  92 .pchar _                                   85 .pchar  448  7  0       526080 0008 0700 0008 0700
+  93 .pchar =                                   86 .pchar  704 11  0       527104 0008 0g00 0008 0b00
+  94 .pchar #1                                  87 .pchar  960 15  0       528128 0008 0w00 0008 0f00
+  95 .pchar ?                                   88 .pchar 1216 19  0       529152 0008 1300 0008 1300
+  96 .pchar ]                                   89 .pchar 1472 23  0       530176 0008 1700 0008 1700
+  97 .pchar [                                   90 .pchar 1728 27  0       531200 0008 1g00 0008 1b00
+  98 ; negatives                              
+  99 .pchar ; space must be escaped, semicolo Error: Line 99 - Invalid argument count: 1 argument(s) required
+ 100 .pchar : colon must be escaped - delimit Error: Line 100 - Invalid symbol: .pchar 
+ 101                                          
+ 102                                          
+
+Symbol Table:
+------ ------

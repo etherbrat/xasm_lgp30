@@ -1,0 +1,72 @@
+
+Pass 1
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; echo.asm                               
+   2 ; Echo characters received from the keyb 
+   3 ; Set mode to 6-bit before running       
+   4 ; Terminate each character with a stop c 
+   5 ; Do NOT type more than one character be 
+   6 ;                                        
+   7 .locn 3737              ; any old locati locn = 3737
+   8 ;                                        
+   9 start:                                   
+  10     c harmless          ; dump then clea 
+  11     p 0                 ; start proceedi 
+  12     i 0                 ; get input - 6  
+  13     n shift2track       ; left shift bit 
+  14     a pinstr            ; drop on a p in 
+  15     h do_print          ; store the inst 
+  16 do_print:                                
+  17     .word 0             ; print          
+  18     u start             ; loop           
+  19 ;                                        
+  20 shift2track:    .lshn 8 ; value to left  
+  21 pinstr:         p 0     ; p instruction  
+  22 harmless:       .word 0 ; some place to  
+  23 ;                                        
+  24 .end start                               
+
+Symbol Table:
+------ ------
+start        :         3737
+do_print     :         3743
+shift2track  :         3745
+pinstr       :         3746
+harmless     :         3747
+
+Pass 2
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; echo.asm                               
+   2 ; Echo characters received from the keyb 
+   3 ; Set mode to 6-bit before running       
+   4 ; Terminate each character with a stop c 
+   5 ; Do NOT type more than one character be 
+   6 ;                                        
+   7 .locn 3737              ; any old locati locn = 3737
+   8 ;                                        
+   9 start:                                   
+  10     c harmless          ; dump then clea 3737 c      3747 58 35       866956 000k 3f8j 000d 3a8c
+  11     p 0                 ; start proceedi 3738 p         0  0  0       524288 0008 0000 0008 0000
+  12     i 0                 ; get input - 6  3739 i         0  0  0       262144 0004 0000 0004 0000
+  13     n shift2track       ; left shift bit 3740 n      3745 58 33       408196 0006 3f84 0006 3a84
+  14     a pinstr            ; drop on a p in 3741 a      3746 58 34       932488 000q 3f88 000e 3a88
+  15     h do_print          ; store the inst 3742 h      3743 58 31       801404 000j 3f7j 000c 3a7c
+  16 do_print:                                
+  17     .word 0             ; print          3743                              0 0000 0000 0000 0000
+  18     u start             ; loop           3744 u      3737 58 25       670308 000f 3f64 000a 3a64
+  19 ;                                        
+  20 shift2track:    .lshn 8 ; value to left  3745                            256 0000 0100 0000 0100
+  21 pinstr:         p 0     ; p instruction  3746 p         0  0  0       524288 0008 0000 0008 0000
+  22 harmless:       .word 0 ; some place to  3747                              0 0000 0000 0000 0000
+  23 ;                                        
+  24 .end start                               Start: 3737
+
+Symbol Table:
+------ ------
+start        :         3737
+do_print     :         3743
+shift2track  :         3745
+pinstr       :         3746
+harmless     :         3747

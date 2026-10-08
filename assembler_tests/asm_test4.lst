@@ -1,0 +1,68 @@
+
+Pass 1
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test4.asm                          
+   2 ; tests of .atq without and with express 
+   3 ; there is a separate manual test of the 
+   4 ; positives                              
+   5 .atq 3.1415927 3      ; 3243f6b4 from th 
+   6 .atq 6 3              ; 60000000         
+   7 .atq -6 3             ; a0000000         
+   8 .atq 6 16             ; 00030000         
+   9 .atq -6 16            ; fffd0000         
+  10 .atq 6 30             ; 0000000c         
+  11 .atq -6 30            ; fffffff4         
+  12 .atq 100000000.0 28   ; 2faf0800 big num 
+  13 .atq -100000000.0 28  ; d050f800 big neg 
+  14 ;                                        
+  15 .atq 0.875 0   ; 70000000                
+  16 .atq -0.875 0  ; 90000000                
+  17 .atq 0.875 15  ; 0000e000                
+  18 .atq -0.875 15 ; ffff2000                
+  19 .atq 0.875 30  ; 00000000                
+  20 .atq -0.875 30 ; fffffffe (sort of, mayb 
+  21 ;                                        
+  22 .atq (6**2)-30 (3**2)-6      ; as above  
+  23 .atq -100*1000*1000 4*7      ; as above  
+  24 ; negatives                              
+  25 .atq 6 -1      ; bad q value             
+  26 .atq 6 31      ; bad q value             
+  27 .atq 6 2       ; non-fractional at q = 2 
+
+Symbol Table:
+------ ------
+
+Pass 2
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test4.asm                          
+   2 ; tests of .atq without and with express 
+   3 ; there is a separate manual test of the 
+   4 ; positives                              
+   5 .atq 3.1415927 3      ; 3243f6b4 from th    0                      843314868 3243 w6g4 3243 f6b4
+   6 .atq 6 3              ; 60000000            1                     1610612736 6000 0000 6000 0000
+   7 .atq -6 3             ; a0000000            2                     2684354560 f000 0000 a000 0000
+   8 .atq 6 16             ; 00030000            3                         196608 0003 0000 0003 0000
+   9 .atq -6 16            ; fffd0000            4                     4294770688 wwwk 0000 fffd 0000
+  10 .atq 6 30             ; 0000000c            5                             12 0000 000j 0000 000c
+  11 .atq -6 30            ; fffffff4            6                     4294967284 wwww www4 ffff fff4
+  12 .atq 100000000.0 28   ; 2faf0800 big num    7                      800000000 2wfw 0800 2faf 0800
+  13 .atq -100000000.0 28  ; d050f800 big neg    8                     3494967296 k050 w800 d050 f800
+  14 ;                                        
+  15 .atq 0.875 0   ; 70000000                   9                     1879048192 7000 0000 7000 0000
+  16 .atq -0.875 0  ; 90000000                  10                     2415919104 9000 0000 9000 0000
+  17 .atq 0.875 15  ; 0000e000                  11                          57344 0000 q000 0000 e000
+  18 .atq -0.875 15 ; ffff2000                  12                     4294909952 wwww 2000 ffff 2000
+  19 .atq 0.875 30  ; 00000000                  13                              0 0000 0000 0000 0000
+  20 .atq -0.875 30 ; fffffffe (sort of, mayb   14                     4294967294 wwww wwwq ffff fffe
+  21 ;                                        
+  22 .atq (6**2)-30 (3**2)-6      ; as above    15                     1610612736 6000 0000 6000 0000
+  23 .atq -100*1000*1000 4*7      ; as above    16                     3494967296 k050 w800 d050 f800
+  24 ; negatives                              
+  25 .atq 6 -1      ; bad q value             Error: Line 25 - Illegal q value -1
+  26 .atq 6 31      ; bad q value             Error: Line 26 - Illegal q value 31
+  27 .atq 6 2       ; non-fractional at q = 2 Error: Line 27 - atq conversion error - 6, 2
+
+Symbol Table:
+------ ------

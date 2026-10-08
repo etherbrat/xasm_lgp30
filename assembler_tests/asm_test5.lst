@@ -1,0 +1,68 @@
+
+Pass 1
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test5.asm                          
+   2 ; labels and address arithmetic          
+   3 ; positives                              
+   4            .locn 100                     locn =  100
+   5 start:     c 0                           
+   6            b datastart                   
+   7            .locn 200                     locn =  200
+   8            .atq numdata 3                
+   9            .locn 1000                    locn = 1000
+  10 datastart: .atq 0.5 0                    
+  11            .atq 0.5 1                    
+  12            .atq 0.5 2                    
+  13            .atq 0.5 3                    
+  14 dataend:                                 
+  15            .equ numdata dataend-datastar numdata = 4
+  16 ; negatives                              
+  17            .locn 5000                    Error: Line 17 - Illegal address value: 5000
+  18            .locn 2000                    locn = 2000
+  19            .equ new_symbol location1+200 Error: Line 19 - ValueError, Unknown RPN token 'location1' - location1+200
+  20 location1: .word 0                       
+  21 ;                                        
+  22            .end start+1                  
+
+Symbol Table:
+------ ------
+start        :          100
+datastart    :         1000
+dataend      :         1004
+numdata      :            4
+new_symbol   :            0
+location1    :         2000
+
+Pass 2
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test5.asm                          
+   2 ; labels and address arithmetic          
+   3 ; positives                              
+   4            .locn 100                     locn =  100
+   5 start:     c 0                            100 c         0  0  0       851968 000k 0000 000d 0000
+   6            b datastart                    101 b      1000 15 40        69536 0001 0wf0 0001 0fa0
+   7            .locn 200                     locn =  200
+   8            .atq numdata 3                 200                     1073741824 4000 0000 4000 0000
+   9            .locn 1000                    locn = 1000
+  10 datastart: .atq 0.5 0                    1000                     1073741824 4000 0000 4000 0000
+  11            .atq 0.5 1                    1001                      536870912 2000 0000 2000 0000
+  12            .atq 0.5 2                    1002                      268435456 1000 0000 1000 0000
+  13            .atq 0.5 3                    1003                      134217728 0800 0000 0800 0000
+  14 dataend:                                 
+  16 ; negatives                              
+  17            .locn 5000                    Error: Line 17 - Illegal address value: 5000
+  18            .locn 2000                    locn = 2000
+  20 location1: .word 0                       2000                              0 0000 0000 0000 0000
+  21 ;                                        
+  22            .end start+1                  Start: 101
+
+Symbol Table:
+------ ------
+start        :          100
+datastart    :         1000
+dataend      :         1004
+numdata      :            4
+new_symbol   :            0
+location1    :         2000

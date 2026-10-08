@@ -1,0 +1,134 @@
+
+Pass 1
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; polynomial.asm                         
+   2 ; Evaluate polynomial                    
+   3 ; LGP-30 Programming Manual, April 1957, 
+   4 ; Page 19, 'Final Program', excluding ca 
+   5 ;                                        
+   6 ; Calcuate y = a0*x^4 + a1*x^3 + a2*x^2  
+   7 ; Refactored as y = (((a0*x + a1)*x + a2 
+   8 ;                                        
+   9 .locn 1000                               locn = 1000
+  10 start:                                   
+  11     b add_instr ; initial add instr      
+  12     c do_add    ; place inline and zero  
+  13     h result    ; clear intermediate val 
+  14 ;                                        
+  15 loop:                                    
+  16     b result    ; get intermediate value 
+  17     m x         ; * x (initially 0)      
+  18 do_add:                                  
+  19     .word 0     ; indexed add instr for  
+  20     h result    ; update intermediate va 
+  21 ;                                        
+  22     b do_add    ; get add instr          
+  23     a CONST_1   ; increment address      
+  24     h do_add    ; update add instr       
+  25     s end_instr ; check for end of func  
+  26     t loop      ; go back for more?      
+  27     z 0         ; end of prog - temp con 
+  28 ;                                        
+  29 result:                                  
+  30     .word 0     ; result accumulated her 
+  31 CONST_1:                                 
+  32     .atq 1 29   ; incrementer            
+  33 add_instr:                               
+  34     a a0        ; add instr with addr of 
+  35 end_instr:                               
+  36     a end_add   ; add instr with addr pa 
+  37 ;                                        
+  38 x:  .word 0     ; put x here using atqde 
+  39 a0: .word 0     ; put a0 here using atqd 
+  40 a1: .word 0     ; put a1 here - q value  
+  41 a2: .word 0     ; put a2 here - a value  
+  42 a3: .word 0     ; put a3 here - q value  
+  43 a4: .word 0     ; put a4 here - q value  
+  44 end_add: .word 0    ; past last constant 
+  45 ;                                        
+  46 .end start                               
+
+Symbol Table:
+------ ------
+start        :         1000
+loop         :         1003
+do_add       :         1005
+result       :         1013
+CONST_1      :         1014
+add_instr    :         1015
+end_instr    :         1016
+x            :         1017
+a0           :         1018
+a1           :         1019
+a2           :         1020
+a3           :         1021
+a4           :         1022
+end_add      :         1023
+
+Pass 2
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; polynomial.asm                         
+   2 ; Evaluate polynomial                    
+   3 ; LGP-30 Programming Manual, April 1957, 
+   4 ; Page 19, 'Final Program', excluding ca 
+   5 ;                                        
+   6 ; Calcuate y = a0*x^4 + a1*x^3 + a2*x^2  
+   7 ; Refactored as y = (((a0*x + a1)*x + a2 
+   8 ;                                        
+   9 .locn 1000                               locn = 1000
+  10 start:                                   
+  11     b add_instr ; initial add instr      1000 b      1015 15 55        69596 0001 0wkj 0001 0fdc
+  12     c do_add    ; place inline and zero  1001 c      1005 15 45       855988 000k 0wg4 000d 0fb4
+  13     h result    ; clear intermediate val 1002 h      1013 15 53       790484 000j 0wk4 000c 0fd4
+  14 ;                                        
+  15 loop:                                    
+  16     b result    ; get intermediate value 1003 b      1013 15 53        69588 0001 0wk4 0001 0fd4
+  17     m x         ; * x (initially 0)      1004 m      1017 15 57       462820 0007 0wq4 0007 0fe4
+  18 do_add:                                  
+  19     .word 0     ; indexed add instr for  1005                              0 0000 0000 0000 0000
+  20     h result    ; update intermediate va 1006 h      1013 15 53       790484 000j 0wk4 000c 0fd4
+  21 ;                                        
+  22     b do_add    ; get add instr          1007 b      1005 15 45        69556 0001 0wg4 0001 0fb4
+  23     a CONST_1   ; increment address      1008 a      1014 15 54       921560 000q 0wk8 000e 0fd8
+  24     h do_add    ; update add instr       1009 h      1005 15 45       790452 000j 0wg4 000c 0fb4
+  25     s end_instr ; check for end of func  1010 s      1016 15 56       987104 000w 0wq0 000f 0fe0
+  26     t loop      ; go back for more?      1011 t      1003 15 43       724908 000g 0wfj 000b 0fac
+  27     z 0         ; end of prog - temp con 1012 z         0  0  0            0 0000 0000 0000 0000
+  28 ;                                        
+  29 result:                                  
+  30     .word 0     ; result accumulated her 1013                              0 0000 0000 0000 0000
+  31 CONST_1:                                 
+  32     .atq 1 29   ; incrementer            1014                              4 0000 0004 0000 0004
+  33 add_instr:                               
+  34     a a0        ; add instr with addr of 1015 a      1018 15 58       921576 000q 0wq8 000e 0fe8
+  35 end_instr:                               
+  36     a end_add   ; add instr with addr pa 1016 a      1023 15 63       921596 000q 0wwj 000e 0ffc
+  37 ;                                        
+  38 x:  .word 0     ; put x here using atqde 1017                              0 0000 0000 0000 0000
+  39 a0: .word 0     ; put a0 here using atqd 1018                              0 0000 0000 0000 0000
+  40 a1: .word 0     ; put a1 here - q value  1019                              0 0000 0000 0000 0000
+  41 a2: .word 0     ; put a2 here - a value  1020                              0 0000 0000 0000 0000
+  42 a3: .word 0     ; put a3 here - q value  1021                              0 0000 0000 0000 0000
+  43 a4: .word 0     ; put a4 here - q value  1022                              0 0000 0000 0000 0000
+  44 end_add: .word 0    ; past last constant 1023                              0 0000 0000 0000 0000
+  45 ;                                        
+  46 .end start                               Start: 1000
+
+Symbol Table:
+------ ------
+start        :         1000
+loop         :         1003
+do_add       :         1005
+result       :         1013
+CONST_1      :         1014
+add_instr    :         1015
+end_instr    :         1016
+x            :         1017
+a0           :         1018
+a1           :         1019
+a2           :         1020
+a3           :         1021
+a4           :         1022
+end_add      :         1023

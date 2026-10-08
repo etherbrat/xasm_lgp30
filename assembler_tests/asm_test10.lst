@@ -1,0 +1,69 @@
+
+Pass 1
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test10.asm                         
+   2 ; test expression parser/evaluator opera 
+   3 ; positives                              
+   4 .equ s1 2**2    ; 4                      s1 = 4
+   5 .equ s2 2*3     ; 6                      s2 = 6
+   6 .equ s3 6//4    ; 1                      s3 = 1
+   7 .equ s4 -6//4   ; -2                     s4 = -2
+   8 .equ s5 6/4     ; 1.5                    s5 = 1.5
+   9 .equ s6 16+8    ; 24                     s6 = 24
+  10 .equ s7 16-8    ; 8                      s7 = 8
+  11 .equ s8 -16     ; -16                    s8 = -16
+  12 .equ s9 and(0xffffffff,0x11111111) ; 0x1 s9 = 286331153
+  13 .equ s10 or(0x0,0x1)               ; 0x1 s10 = 1
+  14 .equ s11 xor(0x0,0x1)              ; 0x1 s11 = 1
+  15 .equ s12 not(0x0)                  ; 0xf s12 = -1
+  16 .equ s13 shl(0x4,0x1)              ; 0x8 s13 = 8
+  17 .equ s14 shr(0x4,0x1)              ; 0x2 s14 = 2
+  18 .equ s15 max(8,16,32)              ; 32  s15 = 32
+  19 .atq 3.0/6.0 1 ; special case - floating 
+  20 .end 0                                   
+
+Symbol Table:
+------ ------
+s1           :            4
+s2           :            6
+s3           :            1
+s4           :           -2
+s5           :          1.5
+s6           :           24
+s7           :            8
+s8           :          -16
+s9           :    286331153
+s10          :            1
+s11          :            1
+s12          :           -1
+s13          :            8
+s14          :            2
+s15          :           32
+
+Pass 2
+Line Statement                                Locn Opcode Addr  T  S          Dec Sex       Hex      
+---- ---------                                ---- ------ ----  -  -          --- ---       ---      
+   1 ; asm_test10.asm                         
+   2 ; test expression parser/evaluator opera 
+   3 ; positives                              
+  19 .atq 3.0/6.0 1 ; special case - floating    0                      536870912 2000 0000 2000 0000
+  20 .end 0                                   Start: 0
+
+Symbol Table:
+------ ------
+s1           :            4
+s2           :            6
+s3           :            1
+s4           :           -2
+s5           :          1.5
+s6           :           24
+s7           :            8
+s8           :          -16
+s9           :    286331153
+s10          :            1
+s11          :            1
+s12          :           -1
+s13          :            8
+s14          :            2
+s15          :           32
